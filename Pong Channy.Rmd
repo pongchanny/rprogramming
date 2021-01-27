@@ -1,0 +1,122 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+1. Write a R code to Generate 6X6 matrix (A) using the random numbers between 1 to 100 & generate another 6x6 matrix (B) using random numbers between 500 to 600.
+
+```{r}
+A<- matrix(1:100, nrow = 6, ncol = 6, byrow = FALSE)
+B<- matrix(1:100, nrow= 6, ncol=6, byrow = FALSE)
+
+# a.find the range of matrices A and B
+range_A <- range(A)
+range_B <- range(B)
+
+# b. find the max value from each row of the matrices A & B
+
+#For matrix A
+max.col(A, ties.method = c("random",  "first", "last"))
+#for matrix B
+max.col(B, ties.method = c("random", "first", "last"))
+
+# c. find the diagonal values of matrices A & B
+diag_A <- diag(A)
+diag_B <- diag(B)
+
+# d. Multiply A & B
+d <- A%*%B
+d
+
+# e. replace the 4th row of Matrix A with the diagonal value of B
+
+
+# f. Multiply matrices A & B and store values on X
+x <- A%*%B
+x
+
+# g. Divide the matrix A with matrix B
+g <- A/B
+g
+```
+
+2. Create a table using dataframe/tibble with the following categories
+
+```{r}
+a <- c("Pong", "Pech", "Pel", "Pich", "Kruy", "Kit", "Sann", "Sim", "Khean", "Hann")
+b <- c("Channy", "Sokmeng", "Dane", "Sovannara","Chandara", "Bunrong", "Chamroeun", "Chhay", "Sreythou", "Manich")
+c <- c(25, 20, 21, 22, 20, 21, 22, 22, 19, 23)
+d <- c("Student","Student","Student","Student","Student","Student","Student","Student","Student","Student")
+e <- c("KIT","KIT","KIT","KIT","KIT","KIT","KIT","KIT","KIT","KIT")
+f <- 1:10
+
+info <- data.frame(First_name = a, Last_name = b, age = c, Occupation = d, Place = e, Random_number = f)
+
+info
+
+# g. extract the last column
+g<- data.frame(info$Random_number)
+g
+
+# d. find the sum, mean, and length of the extracted column
+sum <- sum(g)
+sum
+mean <- mean(g)
+mean
+length <- length(g)
+length
+
+```
+3. Create a .txt file (min = 150 words) with the lastest news in English in Cambodia from the official news agency's website
+
+```{r}
+phnompenhpost <- c("Since the outbreak of Covid-19 early last year, more than 120,000 out of 1.2 million Cambodian migrant workers in Thailand have returned home, with many facing difficulties to sustain themselves and their families.
+
+To ease the burden, the Ministry of Planning has encouraged returning migrants to apply for IDPoor cards with their local authorities. So far, however, only a small portion have applied to join the programme despite widespread hardships.
+
+Phorn Chantha is a 51-year-old farmer from Kors Kralor district’s Chhnal Mann commune in Battambang province. Before the outbreak, he had worked with family members as gardeners for a real estate company in Thailand’s Pathum Thani province for four years.")
+
+write(phnompenhpost, "D:\\R_Programming\\phnompenhpost.txt", append=FALSE)
+
+# a. read the .txt file
+read_file <- read.delim("phnompenhpost.txt")
+
+# b. perform the Tokenization and count the words
+table_mining <- data.frame(SNo = 1, Text = phnompenhpost)
+table_mining %>% 
+  unnest_tokens(info, Text) %>%  #list word one by one
+  countword <- count(info) %>% #count the words
+
+# c. find the most repeated word and replace with the word "KIT"
+
+
+# d. Perform Sentiment Analysis
+sentiment(table_mining$Text)
+sentiment_by(table_mining$Text)
+get_sentences(table_mining$Text)
+#get the emotion count
+emotion_by(table_mining$Text)
+
+# e. Plot the graph
+ggplot(data, aes(x= info, y=countword)) +
+  geom_col() +
+  xlab("Number of Words") +
+  ylab("List of words") +
+  ggtitle("Text Mining Using R") + 
+  
+  theme(plot.title=element_text(size=25, color='yellow', face='bold', hjust=0.5, margin=margin(r=25)))
+      axis.title.x=element_text(size=10, color='blue', face='bold', margin=margin(r=20),
+      axis.title.y=element_text(size=10, color='red', face='bold', margin=margin(r=20)),
+     ) 
+```
+
+4. Find the assigned Dataset from the list below and perform the following
+
+```{r}
+# a. import and clean the dataset
+
+```
+
+
+
+
